@@ -18,30 +18,10 @@
     <header></header>
     <main>
       <div class="container">
-          <div class="row">
-              <h1>Login</h1>
-          </div>
-          <div class="row">
-            <div class="error hide">
-              <p>Woops, invalid credentials</p>
-            </div>
-          </div>
         <div class="row">
-          <form id="loginForm">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" />
-            </div>
-            <div class="mb-3">
-              <label for="password class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-              />
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          <div class="col">
+            <div class="userName"></div>
+          </div>
         </div>
       </div>
     </main>
@@ -53,6 +33,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script type="module" src="/js/index.js"></script>
+    <script type="module" src="/js/loggedIn.js"></script>
   </body>
 </html>

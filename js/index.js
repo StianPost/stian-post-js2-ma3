@@ -1,10 +1,8 @@
-import {
-  getFromLocalStorage,
-  saveToLocalStorage,
-} from './libs/localStorageHelpers.js';
+import { saveToLocalStorage } from './libs/localStorageHelpers.js';
 import { testEmailAddress, testText } from './libs/validation.js';
 
 const login = document.querySelector('#loginForm');
+const errorLabel = document.querySelector('.error');
 
 login.onsubmit = async () => {
   event.preventDefault();
@@ -13,16 +11,21 @@ login.onsubmit = async () => {
 
   if (testEmailAddress(email) && testText(password, 5)) {
     try {
-      console.log('passed');
       const { data } = await axios.post('http://localhost:1337/auth/local', {
         identifier: email,
         password: password,
       });
+
       saveToLocalStorage('jwt', data.jwt);
       saveToLocalStorage('user', data.user);
+      saveToLocalStorage('userName', data.user.username);
 
-      //   window.location.href = './profile.html';
-    } catch (error) {}
+      window.location.href = './loggedIn.html';
+    } catch (error) {
+      errorLabel.classList.remove('hide');
+    }
   } else {
+    errorLabel.classList.remove('hide');
+    console.log('error');
   }
 };
