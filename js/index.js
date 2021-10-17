@@ -9,7 +9,7 @@ login.onsubmit = async () => {
   let email = document.querySelector('#email').value.trim();
   let password = document.querySelector('#password').value.trim();
 
-  if (testEmailAddress(email) && testText(password, 5)) {
+  if (testEmailAddress(email) && testText(password, 3)) {
     try {
       const { data } = await axios.post('http://localhost:1337/auth/local', {
         identifier: email,
